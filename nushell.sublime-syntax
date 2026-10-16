@@ -179,6 +179,9 @@ contexts:
     - include: function-call
     - include: dollar-variable
     - include: literal-bare-string
+  expression1:
+    - include: expression
+    - include: pop
 
   expression-parameter:
     - include: subexpression
@@ -1031,7 +1034,10 @@ contexts:
               - include: match-pattern
               - match: =>
                 scope: keyword.operator.arrow.nu
-                push: block
+                push:
+                  - match: '(?=\s*\{)'
+                    push: block
+                  - include: expression1
               - match: '\}'
                 scope: punctuation.section.match.end.nu
                 pop: 2
