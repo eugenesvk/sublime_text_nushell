@@ -21,7 +21,6 @@ variables:
   double_quoted_string_escape:	'\\(["''\\/bfrnt]|u\{\h{1,6}\})'
   quoted_string:              	'''.*?''|"({{double_quoted_string_escape}}|.)*?"|`.*?`'
   bare_string:                	'[\w*+./@~]+'
-  pipe:                       	'(^|(?<!\|))\|(?!\|)'
   identifier_break:           	(?=\s|[#);\]{}|]|$)
   expression_end:             	(?=\s*[#);\]{}|]|\s*$)
   expression_break:           	(?=\s|{{expression_end}})
@@ -255,8 +254,13 @@ contexts:
     - match: '{{operator}}'
       scope: keyword.operator.nu
 
+  # pipe: '(^|(?<!\|))\|(?!\|)' remove negative lookbehinds for v2 compatibility
   pipe:
-    - match: '{{pipe}}'
+    - match: '(\|)(\|)'
+      captures:
+        1: keyword.operator.pipe.nu # reminds that only a single pipe can be an operator
+        2: invalid.illegal.nu
+    - match: '(\|)'
       scope: keyword.operator.pipe.nu
 
   date:
