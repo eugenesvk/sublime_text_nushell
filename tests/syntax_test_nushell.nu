@@ -787,16 +787,17 @@ where foo | null
 #           ^^^^ source.shell.nu constant.language.null.nu
 
 where foo == bar and foo == bar | null
-# <- meta.function-call.identifier.nu support.function.nu
-#     ^^^ meta.function-call.arguments.row-condition.nu variable.name.nu
-#         ^^ meta.function-call.arguments.row-condition.nu keyword.operator.nu
-#            ^^^ meta.function-call.arguments.row-condition.nu string.bare.nu
-#                ^^^ meta.function-call.arguments.row-condition.nu keyword.operator.nu
-#                    ^^^ meta.function-call.arguments.row-condition.nu variable.name.nu
-#                        ^^ meta.function-call.arguments.row-condition.nu keyword.operator.nu
-#                           ^^^ meta.function-call.arguments.row-condition.nu string.bare.nu
-#                               ^ keyword.operator.pipe.nu
-#                                 ^^^^ source.shell.nu constant.language.null.nu
+# <-                                     meta.function-call.identifier.nu support.function.nu
+#     ^^^^^^^^^^^^^^^^^^^^^^^^^^         meta.function-call.arguments.row-condition.nu
+#     ^^^                                variable.name.nu
+#         ^^                             keyword.operator.nu
+#            ^^^                         string.bare.nu
+#                ^^^                     keyword.operator.nu
+#                    ^^^                 variable.name.nu
+#                        ^^              keyword.operator.nu
+#                           ^^^          string.bare.nu
+#                               ^        keyword.operator.pipe.nu
+#                                 ^^^^   source.shell.nu constant.language.null.nu
 
 where size > 10kb and size < 100kb | null
 # <- meta.function-call.identifier.nu support.function.nu
