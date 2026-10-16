@@ -892,10 +892,10 @@ match 1 {
 #              ^ meta.block.nu punctuation.section.block.end.nu
   1..10 => { 'foo' }
 # ^^^^^ constant.range.nu
-#       ^^ keyword.operator.arrow.nu
-#          ^ meta.block.nu punctuation.section.block.begin.nu
-#            ^ meta.block.nu meta.string.nu string.quoted.single.nu punctuation.definition.string.begin.nu
-#                  ^ meta.block.nu punctuation.section.block.end.nu
+#       ^^                 keyword.operator.arrow.nu
+#          ^               meta.block.nu punctuation.section.block.begin.nu
+#            ^             meta.block.nu meta.string.nu string.quoted.single.nu punctuation.definition.string.begin.nu
+#                  ^       meta.block.nu punctuation.section.block.end.nu
   [$head, ..$tail] => { 'foo' }
 # ^ punctuation.section.list.begin.nu
 #  ^^^^ variable.other.nu
