@@ -8,6 +8,7 @@ scope: source.shell.nu
 file_extensions:
   - nu
 
+version          : 2
 first_line_match: |-
   (?xi:
     ^ \#! .* \b(nu)\b            # shebang
