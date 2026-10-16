@@ -16,5 +16,10 @@ All notable changes to this project will be documented in this file
 <!-- - 🔒 __Security__ -->
   <!-- + vulnerabilities -->
 
+- ✨ __Added__
+  + support for command type signatures `def cmd []: oneof< table<type: int, bar: float>, int, string> -> record<type: int, bar: string> { mut $o = {type:0,bar:'b'}; $o}`
+- 🐞 __Fixed__
+  + match results only accepting blocks, not single expressions
+
 [v1.11.0]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.0
 ## [v1.11.0]
