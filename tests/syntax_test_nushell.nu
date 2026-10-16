@@ -940,6 +940,26 @@ match 1 {
 #              ^ meta.block.nu punctuation.section.block.end.nu
 }
 
+let PRE = ''
+#   ^^^ variable.name.nu
+def cmd_match [] {
+  let c = [black red yellow green purple blue indigo]
+  let m_c = match $c {
+  #         ^^^^^                                     keyword.control.match.nu
+    "black"                     => "classy"
+    "red"    | "green" | "blue" => "fundamental"
+    "yellow" | "purple"         => "vibrant"
+    _                           => "innovative"
+    #                              ^^^^^^^^^^^^       meta.block.nu
+    #                              ^^^^^^^^^^^^       meta.string.nu
+  }
+# ^                                                   meta.block.nu punctuation.section.match.end.nu
+}
+# <-                                                  meta.block.nu punctuation.section.block.end.nu
+let POS = ''
+# <-                                                - meta.block.nu
+#   ^^^ variable.name.nu
+
 ##
 # Loop
 ##
