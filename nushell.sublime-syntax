@@ -755,13 +755,18 @@ contexts:
 
         - include: command-𝐓-signature
         - include: block
+  command-𝐓-variant:
+    - include: command-𝐓-combo-list
+    - include: command-𝐓-combo-record
+    - include: command-𝐓-combo-table
+    - include: command-𝐓-union
+    - include: command-𝐓
   command-𝐓-signature:
     - match: ':'
       scope: punctuation.separator.type-signature.nu
       push:
         - meta_scope: meta.type.nu
-        - include: command-𝐓-union
-        - include: command-𝐓
+        - include: command-𝐓-variant
         - match: ->
           scope: punctuation.separator.type-signature.nu
         - match: '{{cmd_type_end}}'
@@ -775,18 +780,74 @@ contexts:
   command-𝐓:
     - match: '{{type}}'
       scope: storage.type.nu
-  command-𝐓-union:
-    - match: '(oneof)(<)'
-      captures:
-        1: storage.type.nu keyword.declaration.type.nu
-        2: punctuation.definition.type.begin.nu
+  command-𝐓-1:
+    - match: '{{type}}'
+      scope: storage.type.nu #invalid.illegal.muted
+      pop  : 1
+  command-𝐓-inner-1:
+    - match: '{{type}}'
+      scope: storage.type.nu
       push:
         - match: '>'
           scope: punctuation.definition.type.end.nu
-          pop: 1
+          pop: 2
+        - match: '[^\s]'
+          scope: invalid.illegal.nu
+  𝐓-end-pop:
+    - match: '>'
+      scope: punctuation.definition.type.end.nu
+      pop: 1
+  command-𝐓-combo-list:
+    - match: '(list)(\s*)(<)'
+      captures:
+        1: storage.type.list.nu
+        2: invalid.illegal.nu
+        3: punctuation.definition.type.begin.nu
+      push:
+        - include: 𝐓-end-pop
+        - include: command-𝐓-inner-1
+  record-𝐓-key:
+    - match: '({{var_name}})(:)'
+      captures:
+        1: entity.name.label.nu
+        2: punctuation.separator.key-value.nu
+    - match: (?=[^\s])
+      push: command-𝐓-1
+  command-𝐓-combo-record:
+    - match: '(record)(\s*)(<)'
+      captures:
+        1: storage.type.record.nu
+        2: invalid.illegal.nu
+        3: punctuation.definition.type.begin.nu
+      push:
+        - include: 𝐓-end-pop
         - match: ','
           scope: punctuation.separator.type.nu
-        - include: command-𝐓
+        - include: record-𝐓-key
+        - include: command-𝐓-inner-1
+  command-𝐓-combo-table:
+    - match: '(table)(\s*)(<)'
+      captures:
+        1: storage.type.table.nu
+        2: invalid.illegal.nu
+        3: punctuation.definition.type.begin.nu
+      push:
+        - include: 𝐓-end-pop
+        - match: ','
+          scope: punctuation.separator.type.nu
+        - include: record-𝐓-key
+        - include: command-𝐓-inner-1
+  command-𝐓-union:
+    - match: '(oneof)(\s*)(<)'
+      captures:
+        1: storage.type.union.nu keyword.declaration.union.nu
+        2: invalid.illegal.nu
+        3: punctuation.definition.type.begin.nu
+      push:
+        - include: 𝐓-end-pop
+        - match: ','
+          scope: punctuation.separator.type.nu
+        - include: command-𝐓-variant
 
   extern-name:
     - match: \'
