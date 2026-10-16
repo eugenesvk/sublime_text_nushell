@@ -1,13 +1,8 @@
 %YAML 1.2
 ---
-# - https://www.sublimetext.com/docs/syntax.html
-# - https://www.nushell.sh/book/
-name: Nushell
-scope: source.shell.nu
-
-file_extensions:
-  - nu
-
+name             : Nushell # sublimetext.com/docs/syntax.html   nushell.sh/book
+file_extensions  : [nu]
+scope            : source.shell.nu
 version          : 2
 first_line_match: |-
   (?xi:
