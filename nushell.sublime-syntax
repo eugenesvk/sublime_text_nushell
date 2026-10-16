@@ -753,7 +753,40 @@ contexts:
           scope: entity.name.command.nu
           push: command-parameters
 
+        - include: command-𝐓-signature
         - include: block
+  command-𝐓-signature:
+    - match: ':'
+      scope: punctuation.separator.type-signature.nu
+      push:
+        - meta_scope: meta.type.nu
+        - include: command-𝐓-union
+        - include: command-𝐓
+        - match: ->
+          scope: punctuation.separator.type-signature.nu
+        - match: '{{cmd_type_end}}'
+          pop: 1
+        # - include: comment
+        # weird restrictions banning whitespace/comments, maybe will be removed in a future parser?
+        - match: '#'
+          scope: invalid.illegal.type-signature.nu
+        - match: '\n'
+          scope: invalid.illegal.muted.type-signature.nu
+  command-𝐓:
+    - match: '{{type}}'
+      scope: storage.type.nu
+  command-𝐓-union:
+    - match: '(oneof)(<)'
+      captures:
+        1: storage.type.nu keyword.declaration.type.nu
+        2: punctuation.definition.type.begin.nu
+      push:
+        - match: '>'
+          scope: punctuation.definition.type.end.nu
+          pop: 1
+        - match: ','
+          scope: punctuation.separator.type.nu
+        - include: command-𝐓
 
   extern-name:
     - match: \'
