@@ -1127,3 +1127,34 @@ contexts:
               scope: punctuation.section.record.end.nu
               set: block
               pop: 2
+# Ending helpers
+  else-pop:
+    - match               : '(?=\S)'
+      pop                 : 1
+  else-pop1:
+    - match               : '(?=\S)'
+      pop                 : 1
+  else-pop2:
+    - match               : '(?=\S)'
+      pop                 : 2
+  else-pop3:
+    - match               : '(?=\S)'
+      pop                 : 3
+  pop:
+    - match               : ''
+      pop                 : 1
+  pop1:
+    - match               : ''
+      pop                 : 1
+  pop2:
+    - match               : ''
+      pop                 : 2
+  pop3:
+    - match               : ''
+      pop                 : 3
+  pop4:
+    - match               : ''
+      pop                 : 4
+  pop5:
+    - match               : ''
+      pop                 : 5
