@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file
 
-[unreleased]: https://github.com/stevenxxiu/sublime_text_nushell/compare/v1.11.0...HEAD
+[unreleased]: https://github.com/stevenxxiu/sublime_text_nushell/compare/v1.11.1...HEAD
 ## [Unreleased]
 <!-- - ✨ __Added__ -->
   <!-- + new features -->
@@ -15,6 +15,10 @@ All notable changes to this project will be documented in this file
   <!-- + now removed features -->
 <!-- - 🔒 __Security__ -->
   <!-- + vulnerabilities -->
+
+
+[v1.11.1]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.1
+## [v1.11.1]
 
 - ✨ __Added__
   + support for command type signatures `def cmd []: oneof< table<type: int, bar: float>, int, string> -> record<type: int, bar: string> { mut $o = {type:0,bar:'b'}; $o}`
