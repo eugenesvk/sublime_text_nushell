@@ -11,7 +11,7 @@ first_line_match: |-
 
 variables:
   non_var_name_char: |-
-    \s!"#$&'()*+,\-./:;<=>?\[\]^`{|}
+    \s!"#$&'()\*+,\-./:;<=>?\[\]^`\{|\}
   var_name:                   	  '[^{{non_var_name_char}}]+'
   var_name_end:               	'(?=[{{non_var_name_char}}]|$)'
   long_flag:                  	'--[A-Za-z\d\-_]*'
