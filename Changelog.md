@@ -16,6 +16,8 @@ All notable changes to this project will be documented in this file
 <!-- - 🔒 __Security__ -->
   <!-- + vulnerabilities -->
 
+- 🐞 __Fixed__
+  + line continuation breaking breaking inside group
 
 [v1.11.4]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.4
 ## [v1.11.4]
