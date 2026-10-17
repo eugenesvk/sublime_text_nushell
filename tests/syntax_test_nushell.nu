@@ -1173,3 +1173,15 @@ $var.1.bar
 #     ^^^ meta.property.nu
 #        ^ punctuation.accessor.nu
 #         ^^^ meta.property.nu
+
+
+def group_nl [] { # don't interupt scope inside a group on newlines
+  let $n = 1
+  let $t = 1
+  let $out1 = (if ($n == 1) and ($t == 2) { "" } else { "" })
+  #                         ^^^                                 meta.group.nu keyword.operator.nu
+  let $out2 = (if ($n == 1)
+    and       ($t == 2) { "" } else { "" })
+  # ^^^                                                         meta.group.nu keyword.operator.nu
+  return $out2
+}
