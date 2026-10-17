@@ -1022,8 +1022,14 @@ contexts:
           pop: 1
 
   row-condition:
-    - match: '{{binary_logic_operator}}'
-      scope: keyword.operator.nu
+    - match: '(?={{bin_op}})'
+      push:
+      - match: '{{bin_op}}'
+        scope: keyword.operator.nu
+        push:
+          - include: id-break-pop
+          - include: S🛑
+      - include: pop
     - match: '{{var_name}}'
       scope: variable.name.nu
     - match: '(?!{{binary_logic_operator}}){{operator}}'
