@@ -17,6 +17,9 @@ All notable changes to this project will be documented in this file
   <!-- + vulnerabilities -->
 
 
+- 🐞 __Fixed__
+  + attempt at trying to have a helpful error message after binary operator. In current syntax it's ambiguous with other names that are valid (starting with 'or' etc)
+
 [v1.11.2]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.2
 ## [v1.11.2]
 - 🗑️ __Removed__
