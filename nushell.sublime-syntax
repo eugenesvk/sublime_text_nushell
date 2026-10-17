@@ -1168,3 +1168,22 @@ contexts:
   pop5:
     - match               : ''
       pop                 : 5
+  S🛑:
+    - match               : '(\S)'
+      scope               : invalid.illegal.position.nu #✗S🛑
+      pop                 : 1
+  S🛑s:
+    - match               : '(\S)'
+      scope               : invalid.illegal.position.nu #✗S🛑
+  id-break-pop:
+    - match               : '{{identifier_break}}'
+      pop                 : 1
+  else-pop-linebeg:
+    - match               : '(?=^)'
+      scope: invalid.illegal.else-pop-linebeg2
+      pop                 : 1
+  else-pop-linebeg2:
+    - match               : '(?=^)'
+      scope: invalid.illegal.else-pop-linebeg2
+      pop                 : 2
+
