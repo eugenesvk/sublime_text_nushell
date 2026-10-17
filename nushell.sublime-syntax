@@ -256,7 +256,7 @@ contexts:
           pop: 1
     - match: '(?=(?:^|\s){{bin_op}})'
       push:
-      - match: '{{bin_op}}'
+      - match: '{{bin_op}}{{identifier_break}}'
         scope: keyword.operator.nu
         push:
           - include: id-break-pop
