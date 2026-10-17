@@ -1032,7 +1032,7 @@ contexts:
       - include: pop
     - match: '{{var_name}}'
       scope: variable.name.nu
-    - match: '(?!{{binary_logic_operator}}){{operator}}'
+    - match: '({{operator_non_bin_pre}})'
       scope: keyword.operator.nu
       push:
         - include: subexpression
