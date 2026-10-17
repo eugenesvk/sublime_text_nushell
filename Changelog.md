@@ -17,6 +17,9 @@ All notable changes to this project will be documented in this file
   <!-- + vulnerabilities -->
 
 
+- 🐞 __Fixed__
+  + remove stray debug scopes
+
 [v1.11.3]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.3
 ## [v1.11.3]
 - 🐞 __Fixed__
