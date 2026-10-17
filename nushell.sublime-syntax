@@ -67,6 +67,8 @@ variables:
       ignore|is-admin|lazy\ make|let|loop|match|module|mut|overlay\ hide|overlay\ list|overlay\ new|overlay\ use|
       register|return|source|source-env|try|use|version|while
     )
+  native_command_dfr_ext: |-
+    (?:all-false|all-true|append|arg-max|arg-min|arg-sort|arg-true|arg-unique|as-date|as-datetime|columns|concatenate|contains|count-null|cumulative|drop|drop-duplicates|drop-nulls|dtypes|dummies|first|get|get-day|get-hour|get-minute|get-month|get-nanosecond|get-ordinal|get-second|get-week|get-weekday|get-year|into-df|into-nu|is-duplicated|is-not-null|is-null|is-unique|last|lowercase|ls|melt|n-unique|not|open|query|replace|replace-all|rolling|sample|set|set-with-idx|shape|slice|str-lengths|str-slice|strftime|summary|take|to-arrow|to-avro|to-csv|to-jsonl|to-parquet|uppercase|value-counts)
   native_command: |-
     (?x:
       # bits
@@ -82,15 +84,7 @@ variables:
       # database
       query\ db|schema|
       # dataframe
-      dfr\ all-false|dfr\ all-true|dfr\ append|dfr\ arg-max|dfr\ arg-min|dfr\ arg-sort|dfr\ arg-true|dfr\ arg-unique|
-      dfr\ as-date|dfr\ as-datetime|dfr\ columns|dfr\ concatenate|dfr\ contains|dfr\ count-null|dfr\ cumulative|
-      dfr\ drop|dfr\ drop-duplicates|dfr\ drop-nulls|dfr\ dtypes|dfr\ dummies|dfr\ first|dfr\ get|dfr\ get-day|
-      dfr\ get-hour|dfr\ get-minute|dfr\ get-month|dfr\ get-nanosecond|dfr\ get-ordinal|dfr\ get-second|dfr\ get-week|
-      dfr\ get-weekday|dfr\ get-year|dfr\ into-df|dfr\ into-nu|dfr\ is-duplicated|dfr\ is-not-null|dfr\ is-null|
-      dfr\ is-unique|dfr\ last|dfr\ lowercase|dfr\ ls|dfr\ melt|dfr\ n-unique|dfr\ not|dfr\ open|dfr\ query|
-      dfr\ replace|dfr\ replace-all|dfr\ rolling|dfr\ sample|dfr\ set|dfr\ set-with-idx|dfr\ shape|dfr\ slice|
-      dfr\ str-lengths|dfr\ str-slice|dfr\ strftime|dfr\ summary|dfr\ take|dfr\ to-arrow|dfr\ to-avro|dfr\ to-csv|
-      dfr\ to-jsonl|dfr\ to-parquet|dfr\ uppercase|dfr\ value-counts|
+      dfr\ {{native_command_dfr_ext}}|
       # dataframe or lazyframe
       dfr\ filter-with|dfr\ rename|dfr\ shift|dfr\ unique|dfr\ with-column|
       # date
