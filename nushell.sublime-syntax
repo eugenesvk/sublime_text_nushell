@@ -29,7 +29,6 @@ variables:
   cmd_type_end:               	(?=\{)
   sp_pre:                     	'(?:^|\s)'
   bin_op:                     	'(?:and|or|xor)'
-  binary_logic_operator:      	'(?<=^|\s)(?:and|or|xor){{identifier_break}}'
   type_comp:                  	'(?:list|record|table)'
   type_enum:                  	'(?x:bool|int|float|string  |glob|filesize  |duration|date  |range  |record|list
     |                         	     closure|error|binary  |cell-path  |nothing)' # enum Value @ /github.com/nushell/nushell/blob/main/crates/nu-protocol/src/value/mod.rs
@@ -46,19 +45,7 @@ variables:
       \+\+
     )
   operator_non_bin_pre: '{{operator_conflicted_bare_pre}}|{{operator_non_bare_bin_pre}}'
-  operator: |-
-    (?x:
-      (?:
-        \+|-|\*|/|//|mod|\*\*|
-        ==|!=|<|<=|>|>=|
-        =~|!~|
-        in|not-in|not|{{binary_logic_operator}}|
-        bit-or|bit-xor|bit-and|bit-shl|bit-shr|
-        starts-with|ends-with|
-        \+\+
-      ){{expression_break}}
-    )
-  row_condition_end: (?={{binary_logic_operator}}|[#);\]{}|]|$)
+  row_condition_end: (?={{bin_op}}{{identifier_break}}|[#);\]{}|]|$)
   core_native_command: |-
     (?x:
       alias|break|commandline|const|continue|def|def-env|describe|do|du|echo|error\ make|export\ alias|export\ const|
