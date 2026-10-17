@@ -202,6 +202,7 @@ contexts:
     - include: function-call
     - include: dollar-variable
     - include: literal-bare-string
+    - include: ␤
 
   expression-record-list-table:
     - include: subexpression
