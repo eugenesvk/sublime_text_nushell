@@ -69,6 +69,8 @@ variables:
     )
   native_command_dfr_ext: |-
     (?:all-false|all-true|append|arg-max|arg-min|arg-sort|arg-true|arg-unique|as-date|as-datetime|columns|concatenate|contains|count-null|cumulative|drop|drop-duplicates|drop-nulls|dtypes|dummies|first|get|get-day|get-hour|get-minute|get-month|get-nanosecond|get-ordinal|get-second|get-week|get-weekday|get-year|into-df|into-nu|is-duplicated|is-not-null|is-null|is-unique|last|lowercase|ls|melt|n-unique|not|open|query|replace|replace-all|rolling|sample|set|set-with-idx|shape|slice|str-lengths|str-slice|strftime|summary|take|to-arrow|to-avro|to-csv|to-jsonl|to-parquet|uppercase|value-counts)
+  native_command_date_ext: |-
+    (?:humanize|list-timezone|now|to-record|to-table|to-timezone)
   native_command: |-
     (?x:
       # bits
@@ -88,7 +90,7 @@ variables:
       # dataframe or lazyframe
       dfr\ filter-with|dfr\ rename|dfr\ shift|dfr\ unique|dfr\ with-column|
       # date
-      date\ humanize|date\ list-timezone|date\ now|date\ to-record|date\ to-table|date\ to-timezone|format\ date|
+      date\ {{native_command_date_ext}}|format\ date|
       # debug
       ast|debug|explain|inspect|metadata|profile|timeit|view\ files|view\ source|view\ span|
       # default
