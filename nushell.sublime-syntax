@@ -269,10 +269,9 @@ contexts:
         - string-⸙1
   operator-⸙1:
     - match: '{{operator_conflicted_bare_pre}}'
-      scope: keyword.operator.nu invalid.illegal.muted.operator
+      scope: keyword.operator.nu
       push:
         - match: '{{expression_break}}'
-          scope: invalid.illegal.expression_break
           pop: 2
         - match: '{{bare_string}}'
           fail : ⸙1op∨str
@@ -280,7 +279,6 @@ contexts:
     - include: literal-bare-string
     - include: pop
 
-  # pipe: '(^|(?<!\|))\|(?!\|)' remove negative lookbehinds for v2 compatibility
   pipe:
     - match: '(\|)(\|)'
       captures:
@@ -1012,7 +1010,7 @@ contexts:
     - match: '(?={{bin_op}})'
       push:
       - match: '{{bin_op}}'
-        scope: keyword.operator.nu
+        scope: keyword.operator.nu invalid.illegal
         push:
           - include: id-break-pop
           - include: S🛑
