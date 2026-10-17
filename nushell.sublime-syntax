@@ -252,7 +252,6 @@ contexts:
       scope: keyword.operator.nu
       push:
         - match: '{{expression_break}}'
-          scope: invalid.illegal.expression_break
           pop: 1
     - match: '(?=(?:^|\s){{bin_op}})'
       push:
