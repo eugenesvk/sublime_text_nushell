@@ -28,7 +28,7 @@ variables:
   parameter_type_end:         	(?=\s|[#,<=>@\]|\n])
   cmd_type_end:               	(?=\{)
   binary_logic_operator:      	'(?<=^|\s)(?:and|or|xor){{identifier_break}}'
-  type_comp:                  	'(?x:list|record|table)'
+  type_comp:                  	'(?:list|record|table)'
   type_enum:                  	'(?x:bool|int|float|string  |glob|filesize  |duration|date  |range  |record|list
     |                         	     closure|error|binary  |cell-path  |nothing)' # enum Value @ /github.com/nushell/nushell/blob/main/crates/nu-protocol/src/value/mod.rs
   type:                       	'{{type_enum}}|{{type_comp}}|any'
