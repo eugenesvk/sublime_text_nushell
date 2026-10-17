@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file
 
-[unreleased]: https://github.com/stevenxxiu/sublime_text_nushell/compare/v1.11.3...HEAD
+[unreleased]: https://github.com/stevenxxiu/sublime_text_nushell/compare/v1.11.4...HEAD
 ## [Unreleased]
 <!-- - ✨ __Added__ -->
   <!-- + new features -->
@@ -17,6 +17,8 @@ All notable changes to this project will be documented in this file
   <!-- + vulnerabilities -->
 
 
+[v1.11.4]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.4
+## [v1.11.4]
 - 🐞 __Fixed__
   + remove stray debug scopes
 
