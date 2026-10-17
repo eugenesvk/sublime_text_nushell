@@ -27,11 +27,25 @@ variables:
   parameter_end:              	(?=[#,=\]|\n]|$)
   parameter_type_end:         	(?=\s|[#,<=>@\]|\n])
   cmd_type_end:               	(?=\{)
+  sp_pre:                     	'(?:^|\s)'
+  bin_op:                     	'(?:and|or|xor)'
   binary_logic_operator:      	'(?<=^|\s)(?:and|or|xor){{identifier_break}}'
   type_comp:                  	'(?:list|record|table)'
   type_enum:                  	'(?x:bool|int|float|string  |glob|filesize  |duration|date  |range  |record|list
     |                         	     closure|error|binary  |cell-path  |nothing)' # enum Value @ /github.com/nushell/nushell/blob/main/crates/nu-protocol/src/value/mod.rs
   type:                       	'{{type_enum}}|{{type_comp}}|any'
+  operator_conflicted_bare_pre: (?:\+|\*|/)
+  operator_non_bare_bin_pre: |-
+    (?x:
+      -|//|mod|\*\*|
+      ==|!=|<|<=|>|>=|
+      =~|!~|
+      in|not-in|not|
+      bit-or|bit-xor|bit-and|bit-shl|bit-shr|
+      starts-with|ends-with|
+      \+\+
+    )
+  operator_non_bin_pre: '{{operator_conflicted_bare_pre}}|{{operator_non_bare_bin_pre}}'
   operator: |-
     (?x:
       (?:
@@ -251,8 +265,37 @@ contexts:
     - include: pipe
 
   operator:
-    - match: '{{operator}}'
+    - match: '{{operator_non_bare_bin_pre}}' # no conflict first
       scope: keyword.operator.nu
+      push:
+        - match: '{{expression_break}}'
+          scope: invalid.illegal.expression_break
+          pop: 1
+    - match: '(?=(?:^|\s){{bin_op}})'
+      push:
+      - match: '{{bin_op}}'
+        scope: keyword.operator.nu
+        push:
+          - include: id-break-pop
+          - include: S🛑
+      - include: pop
+    - match: '(?={{operator_conflicted_bare_pre}})'
+      branch_point        : ⸙1op∨str
+      branch              : #✗⁺⸙1op∨str
+        - operator-⸙1
+        - string-⸙1
+  operator-⸙1:
+    - match: '{{operator_conflicted_bare_pre}}'
+      scope: keyword.operator.nu invalid.illegal.muted.operator
+      push:
+        - match: '{{expression_break}}'
+          scope: invalid.illegal.expression_break
+          pop: 2
+        - match: '{{bare_string}}'
+          fail : ⸙1op∨str
+  string-⸙1:
+    - include: literal-bare-string
+    - include: pop
 
   # pipe: '(^|(?<!\|))\|(?!\|)' remove negative lookbehinds for v2 compatibility
   pipe:
