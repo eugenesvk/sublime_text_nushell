@@ -17,6 +17,9 @@ All notable changes to this project will be documented in this file
   <!-- + vulnerabilities -->
 
 
+- 🗑️ __Removed__
+  + rules incompatible with the faster v2 regex engine
+
 [v1.11.1]: https://github.com/stevenxxiu/sublime_text_nushell/releases/tag/v1.11.1
 ## [v1.11.1]
 
