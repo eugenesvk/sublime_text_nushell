@@ -8,6 +8,7 @@ first_line_match: |-
   (?xi:
     ^ \#! .* \b(nu)\b            # shebang
   )
+# todo: check that newline matches grammar or just a simple \n
 
 variables:
   non_var_name_char: |-
